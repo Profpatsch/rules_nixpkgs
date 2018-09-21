@@ -78,7 +78,7 @@ def _nixpkgs_package_impl(ctx):
     # dirname to get the actual workspace path.
     nix_path = str(ctx.path(ctx.attr.repository).dirname)
   elif ctx.attr.path:
-    nix_path = str(ctx.attr_path)
+    nix_path = str(ctx.attr.path)
   elif not (ctx.attr.nix_file or ctx.attr.nix_file_content):
     fail(strFailureImplicitNixpkgs)
 
