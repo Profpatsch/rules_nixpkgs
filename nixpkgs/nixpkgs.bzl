@@ -73,10 +73,7 @@ def _nixpkgs_package_impl(ctx):
   if ctx.attr.repository and ctx.attr.path:
     fail("'repository' and 'path' attributes are mutually exclusive.")
   elif ctx.attr.repository:
-    # XXX Another hack: the repository label typically resolves to
-    # some top-level package in the external workspace. So we use
-    # dirname to get the actual workspace path.
-    nix_path = str(ctx.path(ctx.attr.repository).dirname)
+    nix_path = str(ctx.path(ctx.attr.repository))
   elif ctx.attr.path:
     nix_path = str(ctx.attr.path)
   elif not (ctx.attr.nix_file or ctx.attr.nix_file_content):
